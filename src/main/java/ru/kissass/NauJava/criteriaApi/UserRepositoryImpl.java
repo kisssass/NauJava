@@ -16,7 +16,6 @@ import ru.kissass.NauJava.entity.User;
 @Repository
 public class UserRepositoryImpl implements UserRepositoryCustom {
     private final EntityManager entityManager;
-    @Autowired
     public UserRepositoryImpl(EntityManager entityManager)
     {
         this.entityManager = entityManager;

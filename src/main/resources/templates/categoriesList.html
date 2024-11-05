@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Category List</title>
+</head>
+<body>
+<h1>Category List</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Color</th>
+    </tr>
+    <tr th:each="category : ${categories}">
+        <td th:text="${category.getCategoryId()}"></td>
+        <td th:text="${category.getName()}"></td>
+        <td th:text="${user.getColor()}"></td>
+    </tr>
+</table>
+</body>
+</html>

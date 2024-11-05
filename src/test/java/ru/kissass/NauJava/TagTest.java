@@ -33,7 +33,7 @@ public class TagTest {
     @Test
     void testDeleteTagInTx() {
 // создание роли
-        ru.kissass.NauJava.entity.Tag tag = new Tag();
+        Tag tag = new Tag();
         tag.setName(UUID.randomUUID().toString());
         tagRepository.save(tag);
 // создание задачи 1

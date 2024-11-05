@@ -27,17 +27,17 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public void deleteTag(String tagName) {
+    public void deleteTag(String name) {
         TransactionStatus status = transactionManager.getTransaction(new
                 DefaultTransactionDefinition());
         try
         {
-            List<Task> tasks = taskRepository.findByTagsName(tagName);
+            List<Task> tasks = taskRepository.findByTagsName(name);
             for (Task task : tasks)
             {
                 taskRepository.delete(task);
             }
-            tagRepository.deleteByTagName(tagName);
+            tagRepository.deleteByTagName(name);
             transactionManager.commit(status);
         }
         catch (DataAccessException ex)
