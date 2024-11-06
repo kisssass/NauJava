@@ -1,4 +1,4 @@
-package ru.kissass.NauJava.controller;
+package ru.kissass.NauJava.controller.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,7 @@ public class CategoryController {
     }
 
     @GetMapping("/list")
-    public String categoriesListView(Model model){
+    public String categoriesListView(Model model) {
         Iterable<Category> categories = categoryRepository.findAll();
         model.addAttribute("categories", categories);
         return "categoriesList";

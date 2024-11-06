@@ -10,8 +10,10 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long categoryId;
 
+    @Column(unique = true)
     private String name;
 
+    @Column(unique = true)
     private String color;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)

@@ -1,6 +1,7 @@
 package ru.kissass.NauJava.entity;
 
 import jakarta.persistence.*;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
@@ -25,7 +26,7 @@ public class Task {
     private String status;
 
     @ManyToOne
-    @JoinColumn(name="user_id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
@@ -43,44 +44,44 @@ public class Task {
     )
     private Set<Tag> tags;
 
-    public Long getId(){
+    public Long getId() {
         return taskId;
     }
 
-    public void setId(Long id){
+    public void setId(Long id) {
         this.taskId = id;
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title){
-        this.title=title;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getDescription(){
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description){
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public LocalDate getDueDate(){
+    public LocalDate getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(LocalDate date){
-        this.dueDate=date;
+    public void setDueDate(LocalDate date) {
+        this.dueDate = date;
     }
 
-    public String getStatus(){
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(String status){
-        this.status=status;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public User getUser() {

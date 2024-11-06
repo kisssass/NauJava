@@ -1,8 +1,5 @@
 package ru.kissass.NauJava.businesLogic;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -12,6 +9,8 @@ import ru.kissass.NauJava.accessLayer.TagRepository;
 import ru.kissass.NauJava.accessLayer.TaskRepository;
 import ru.kissass.NauJava.entity.Task;
 
+import java.util.List;
+
 @Service
 public class TagServiceImpl implements TagService {
     private final TagRepository tagRepository;
@@ -19,8 +18,7 @@ public class TagServiceImpl implements TagService {
     private final PlatformTransactionManager transactionManager;
 
     public TagServiceImpl(TagRepository tagRepository, TaskRepository taskRepository,
-                           PlatformTransactionManager transactionManager)
-    {
+                          PlatformTransactionManager transactionManager) {
         this.tagRepository = tagRepository;
         this.taskRepository = taskRepository;
         this.transactionManager = transactionManager;
@@ -30,18 +28,14 @@ public class TagServiceImpl implements TagService {
     public void deleteTag(String name) {
         TransactionStatus status = transactionManager.getTransaction(new
                 DefaultTransactionDefinition());
-        try
-        {
+        try {
             List<Task> tasks = taskRepository.findByTagsName(name);
-            for (Task task : tasks)
-            {
+            for (Task task : tasks) {
                 taskRepository.delete(task);
             }
             tagRepository.deleteByTagName(name);
             transactionManager.commit(status);
-        }
-        catch (DataAccessException ex)
-        {
+        } catch (DataAccessException ex) {
             transactionManager.rollback(status);
             throw ex;
         }

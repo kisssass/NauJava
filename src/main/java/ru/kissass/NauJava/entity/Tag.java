@@ -2,7 +2,6 @@ package ru.kissass.NauJava.entity;
 
 import jakarta.persistence.*;
 
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -12,13 +11,13 @@ public class Tag {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long tagId;
 
-    @Column(unique=true)
+    @Column(unique = true)
     private String name;
 
     @Column
     private String description;
 
-    @Column
+    @Column(unique = true)
     private String color;
 
     @ManyToMany(mappedBy = "tags")
@@ -48,19 +47,19 @@ public class Tag {
         this.description = description;
     }
 
-    public String getColor(){
+    public String getColor() {
         return color;
     }
 
-    public void setColor(String color){
-        this.color= color;
+    public void setColor(String color) {
+        this.color = color;
     }
 
-    public Set<Task> getTasks(){
+    public Set<Task> getTasks() {
         return tasks;
     }
 
-    public void setTasks(Set<Task> tasks){
+    public void setTasks(Set<Task> tasks) {
         this.tasks = tasks;
     }
 }

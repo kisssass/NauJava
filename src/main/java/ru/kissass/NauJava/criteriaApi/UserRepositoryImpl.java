@@ -1,28 +1,23 @@
 package ru.kissass.NauJava.criteriaApi;
 
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Join;
-import jakarta.persistence.criteria.JoinType;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
+import jakarta.persistence.criteria.*;
+import org.springframework.stereotype.Repository;
 import ru.kissass.NauJava.entity.Tag;
 import ru.kissass.NauJava.entity.User;
+
+import java.util.List;
 
 @Repository
 public class UserRepositoryImpl implements UserRepositoryCustom {
     private final EntityManager entityManager;
-    public UserRepositoryImpl(EntityManager entityManager)
-    {
+
+    public UserRepositoryImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
+
     @Override
-    public List<User> findByName(String name)
-    {
+    public List<User> findByName(String name) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
         Root<User> userRoot = criteriaQuery.from(User.class);
@@ -30,9 +25,9 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         criteriaQuery.select(userRoot).where(namePredicate);
         return entityManager.createQuery(criteriaQuery).getResultList();
     }
+
     @Override
-    public List<User> findByTag(String tagTitle)
-    {
+    public List<User> findByTag(String tagTitle) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
         Root<User> userRoot = criteriaQuery.from(User.class);

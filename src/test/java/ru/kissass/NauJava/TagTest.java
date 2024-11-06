@@ -1,32 +1,36 @@
 package ru.kissass.NauJava;
 
 
-import java.util.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import ru.kissass.NauJava.accessLayer.TagRepository;
 import ru.kissass.NauJava.accessLayer.TaskRepository;
 import ru.kissass.NauJava.businesLogic.TagService;
 import ru.kissass.NauJava.entity.Tag;
 import ru.kissass.NauJava.entity.Task;
 
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
+import java.util.UUID;
+
 @SpringBootTest
 public class TagTest {
     private final TagService tagService;
     private final TaskRepository taskRepository;
     private final TagRepository tagRepository;
+
     @Autowired
     public TagTest(TagService tagService,
-                    TaskRepository taskRepository,
-                    TagRepository tagRepository)
-    {
+                   TaskRepository taskRepository,
+                   TagRepository tagRepository) {
         this.tagService = tagService;
         this.taskRepository = taskRepository;
         this.tagRepository = tagRepository;
     }
+
     /**
      * Тестирование удаления задач вместе с тэгами
      */

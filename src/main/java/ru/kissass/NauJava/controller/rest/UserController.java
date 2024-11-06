@@ -1,4 +1,4 @@
-package ru.kissass.NauJava.controller;
+package ru.kissass.NauJava.controller.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

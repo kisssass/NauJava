@@ -1,7 +1,8 @@
 package ru.kissass.NauJava.criteriaApi;
 
-import java.util.List;
 import ru.kissass.NauJava.entity.User;
+
+import java.util.List;
 
 public interface UserRepositoryCustom {
     List<User> findByName(String name);

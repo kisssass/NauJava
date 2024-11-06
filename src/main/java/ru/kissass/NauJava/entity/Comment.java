@@ -16,27 +16,27 @@ public class Comment {
     @JoinColumn(name = "task_id", nullable = false)
     private Task task;
 
-    public Long getCommentId(){
+    public Long getCommentId() {
         return commentId;
     }
 
-    public void setCommentId(Long commentId){
+    public void setCommentId(Long commentId) {
         this.commentId = commentId;
     }
 
-    public String getText(){
+    public String getText() {
         return text;
     }
 
-    public void setText(String text){
+    public void setText(String text) {
         this.text = text;
     }
 
-    public Task getTask(){
+    public Task getTask() {
         return task;
     }
 
-    public void setTask(Task task){
+    public void setTask(Task task) {
         this.task = task;
     }
 }

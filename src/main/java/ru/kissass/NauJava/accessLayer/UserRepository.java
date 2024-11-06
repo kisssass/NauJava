@@ -6,5 +6,6 @@ import ru.kissass.NauJava.entity.User;
 
 @RepositoryRestResource(path = "users")
 public interface UserRepository extends CrudRepository<User, Long> {
+    User findByUserName(String userName);
 
 }
